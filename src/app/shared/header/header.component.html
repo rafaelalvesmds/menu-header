@@ -1,0 +1,28 @@
+<div class="container">
+  <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
+    <p *ngIf="getScreenWidth > 450">LOGO</p>
+    <p *ngIf="getScreenWidth < 450">L</p>
+    <div
+      *ngIf="getScreenWidth > 690"
+      fxLayout="row"
+      fxLayoutAlign="space-around"
+      fxFlex="50"
+    >
+      <button mat-icon-button [routerLink]="''">
+        <mat-icon>home</mat-icon>
+      </button>
+      <button mat-icon-button [routerLink]="'exemples'">
+        <mat-icon>description</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>settings</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>logout</mat-icon>
+      </button>
+    </div>
+    <button mat-icon-button *ngIf="getScreenWidth < 690" class="icon-menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+</div>

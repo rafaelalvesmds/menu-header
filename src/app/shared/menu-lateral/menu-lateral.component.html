@@ -1,0 +1,38 @@
+<div fxLayout="column">
+  <mat-sidenav-container>
+    <mat-sidenav
+      *ngIf="expandedMenu && getScreenWidth > 499"
+      (click)="funcionalidadeMenu()"
+      class="sidenav-closed"
+      #appDrawerIcons
+      [mode]="mode"
+      opened="true"
+    >
+      <mat-nav-list id="menu-administracao" class="menu-sistemas">
+        <app-menu-options
+          *ngFor="let item of menuItens"
+          [item]="item"
+        ></app-menu-options>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <app-header></app-header>
+
+    <mat-sidenav
+      *ngIf="!expandedMenu"
+      class="sidenav-open"
+      #appDrawer
+      [mode]="mode"
+      opened="true"
+    >
+      <mat-nav-list id="menu-administracao" class="menu-sistemas">
+        <app-menu-options
+          *ngFor="let item of menuIcons"
+          [item]="item"
+        ></app-menu-options>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-container>
+</div>

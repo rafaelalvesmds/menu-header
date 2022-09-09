@@ -1,0 +1,29 @@
+<a
+  mat-list-item
+  class="ajustes-menu"
+  (click)="onItemSelected(item)"
+  [ngClass]="{
+    active: item.route ? router.isActive(item.route, true) : false,
+    expanded: expanded
+  }"
+>
+  <mat-icon class="routeIcon" matTooltip="{{ item.matToolTip }}">{{
+    item.iconName
+  }}</mat-icon>
+
+  {{ item.displayName }}
+  <span fxFlex *ngIf="item.children && item.children.length">
+    <span fxFlex></span>
+    <mat-icon [@indicatorRotate]="expanded ? 'expanded' : 'collapsed'">
+      expand_more
+    </mat-icon>
+  </span>
+</a>
+<div *ngIf="expanded" class="menu-children">
+  <app-menu-options
+    class="hover-menu"
+    *ngFor="let child of item.children"
+    [item]="child"
+  >
+  </app-menu-options>
+</div>
